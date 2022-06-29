@@ -28,3 +28,4 @@ cd ~/.vim/plugged/coc.nvim/
 yarn install
 yarn build
 
+
