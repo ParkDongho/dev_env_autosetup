@@ -42,6 +42,9 @@ Plug 'ryanoasis/vim-devicons'
 "vim diminactive 
 Plug 'blueyed/vim-diminactive'
 
+"vim startify
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 "
 "--------------------------------------------------------------
