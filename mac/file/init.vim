@@ -117,9 +117,9 @@ let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
 "let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
 
-nnoremap <C-F5> :bprevious!<Enter>    " 이전 버퍼로 이동
-nnoremap <C-F6> :bnext!<Enter>        " 다음 버퍼로 이동
-nnoremap <C-F4> :bp <BAR> bd #<Enter> " 현재 버퍼를 닫고 이전 버퍼로 이동
+nnoremap <F5> :bprevious!<Enter>    " 이전 버퍼로 이동
+nnoremap <F6> :bnext!<Enter>        " 다음 버퍼로 이동
+nnoremap <F4> :bp <BAR> bd #<Enter> " 현재 버퍼를 닫고 이전 버퍼로 이동
 "
 "---------------------------------------------------
 
