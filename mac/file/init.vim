@@ -45,6 +45,9 @@ Plug 'blueyed/vim-diminactive'
 "vim startify
 Plug 'mhinz/vim-startify'
 
+"vim chisel
+Plug 'lfiolhais/vim-chisel'
+
 call plug#end()
 "
 "--------------------------------------------------------------
@@ -237,3 +240,7 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 "tnoremap <Esc> <C-\><C-n>
 "
 "-------------------------------------------------
+
+"Nerdtree - startify_bookmarks-----------------------
+let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
+"----------------------------------------------------
