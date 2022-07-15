@@ -4,8 +4,10 @@ call plug#begin('~/.vim/plugged') " 플러그인 시작
 "NERDTree
 Plug 'preservim/nerdtree'
 
-"JellyBeans
-Plug 'nanotech/jellybeans.vim'
+"Color Scheme
+"Plug 'nanotech/jellybeans.vim'
+"Plug 'jpo/vim-railscasts-theme'
+Plug 'morhetz/gruvbox'
 
 "Airline
 Plug 'vim-airline/vim-airline'
@@ -32,8 +34,10 @@ Plug 'antoinemadec/vim-verilog-instance'
 "ale linter
 Plug 'w0rp/ale' 
 
-"vim indent guides
-Plug 'nathanaelkane/vim-indent-guides'
+"vim indentGuides & indentLine--------------
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
+"-------------------------------------------
 
 "vim devicons
 "NERDTree의 파일 확장자 아이콘
@@ -44,9 +48,6 @@ Plug 'blueyed/vim-diminactive'
 
 "vim startify
 Plug 'mhinz/vim-startify'
-
-"vim chisel
-Plug 'lfiolhais/vim-chisel'
 
 call plug#end()
 "
@@ -88,8 +89,7 @@ hi statuslineNC ctermfg=White ctermbg=8 cterm=none
 " 마우스로 스크롤 및 리사이즈 가능. [n : Normal mode / v : Visual mode / i : Insert mode / a : All modes]
 set mouse=a 
 
-colorscheme jellybeans
-set background=dark
+
 set expandtab
 
 "새로운 라인이 추가될 때, 이전 라인의 들여쓰기에 자동으로 맞춤. (= ai)
@@ -111,15 +111,24 @@ set softtabstop=2
 "코드접기 활성화
 set foldmethod=indent 
 
+"colorscheme railscasts
+"colorscheme jellybeans
+
+"colorscheme gruvbox--------------------------
+colorscheme gruvbox
+set background=dark
+"---------------------------------------------
+
+
 "vim-airline-----------------------------------------
 "
 let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
 "let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
-
-nnoremap <F5> :bprevious!<Enter>    " 이전 버퍼로 이동
-nnoremap <F6> :bnext!<Enter>        " 다음 버퍼로 이동
-nnoremap <F4> :bp <BAR> bd #<Enter> " 현재 버퍼를 닫고 이전 버퍼로 이동
+nnoremap <F5> :enew<Enter>          " 새로운 버퍼를 연다
+nnoremap <F2> :bprevious!<Enter>    " 이전 버퍼로 이동
+nnoremap <F4> :bnext!<Enter>        " 다음 버퍼로 이동
+nnoremap <F3> :bp <BAR> bd #<Enter> " 현재 버퍼를 닫고 이전 버퍼로 이동
 "
 "---------------------------------------------------
 
@@ -209,23 +218,23 @@ let g:ale_verilog_xvlog_options = '--sv'
 let g:term_buf = 0
 let g:term_win = 0
 function! TermToggle(height)
-    if win_gotoid(g:term_win)
-        hide
-    else
-        botright new
-        exec "resize " . a:height
-        try
-            exec "buffer " . g:term_buf
-        catch
-            call termopen($SHELL, {"detach": 0})
-            let g:term_buf = bufnr("")
-            set nonumber
-            set norelativenumber
-            set signcolumn=no
-        endtry
-        startinsert!
-        let g:term_win = win_getid()
-    endif
+  if win_gotoid(g:term_win)
+    hide
+  else
+    botright new
+    exec "resize " . a:height
+    try
+      exec "buffer " . g:term_buf
+    catch
+      call termopen($SHELL, {"detach": 0})
+      let g:term_buf = bufnr("")
+      set nonumber
+      set norelativenumber
+      set signcolumn=no
+    endtry
+    startinsert!
+    let g:term_win = win_getid()
+  endif
 endfunction
 
 " Toggle terminal on/off (neovim)
@@ -238,13 +247,27 @@ tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
 "--------------------------------------------------
 
-"-------------------------------------------------
-"//terminal 모드의 insert모드 나가기를 esc로 수행
-"
-"tnoremap <Esc> <C-\><C-n>
-"
-"-------------------------------------------------
-
-"Nerdtree - startify_bookmarks-----------------------
+"vim-startify에서 NERDTree의 Bookmark를 활용---------
 let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
-"----------------------------------------------------
+"--------------------------------------------------
+
+"vim indent guides----------------------------
+"let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_guide_size = 1
+"----------------------------------------------
+"vim indent line-------------------------------
+"color scheme
+"let g:indentLine_setColors = 0
+let g:indentLine_defaultGroup = 'SpecialKey'
+
+"charater shape
+let g:indentLine_char = '┊'
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
+
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
+"--------------------------------------------
