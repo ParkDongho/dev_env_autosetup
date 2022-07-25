@@ -1,5 +1,5 @@
 #!/bin/sh
-yum –y install vsftpd
+yum install –y vsftpd
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 yum install -y tigervnc-server xrdp
 
