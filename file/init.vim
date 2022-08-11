@@ -66,7 +66,7 @@ set showcmd
 set showmatch 
 
 " 커서를 기준으로 라인 넘버 표시. 커서 위치에 따라 바뀜. (= rnu)
-set relativenumber 
+" set relativenumber 
 
 " 커서가 있는 라인을 강조 표시. (= cul)
 set cursorline 
