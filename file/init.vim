@@ -49,6 +49,12 @@ Plug 'blueyed/vim-diminactive'
 "vim startify
 Plug 'mhinz/vim-startify'
 
+"nvim telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+" or                                , { 'branch': '0.1.x' }
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+
 call plug#end()
 "
 "--------------------------------------------------------------
@@ -422,3 +428,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "---------------------------------
+
+"Telescope------------------------
+nnoremap <F3> :Telescope find_files theme=dropdown hidden=false<CR>
+
